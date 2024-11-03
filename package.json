@@ -7,10 +7,7 @@
   "bugs": {
     "url": "https://github.com/sjoerdvanBommel/azure-react-icons/issues"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sjoerdvanBommel/azure-react-icons.git"
-  },
+  "repository": "github:sjoerdvanBommel/azure-react-icons",
   "scripts": {
     "build": "npm run generate-azure-icon-components && tsc",
     "generate-azure-icon-components": "tsx src/index.ts src/generated"
