@@ -1,6 +1,6 @@
 {
   "name": "@threeveloper/azure-react-icons",
-  "version": "0.0.3-alpha.1",
+  "version": "0.0.4",
   "description": "A zero-dependency library to get all most recent Azure icons as react components with clear names & full TypeScript support",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

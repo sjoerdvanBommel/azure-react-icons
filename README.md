@@ -6,6 +6,7 @@ Based on the <a href="https://learn.microsoft.com/en-us/azure/architecture/icons
 
 ![](icon.svg)
 </div>
+
 ## Installation 
 
 ```bash
