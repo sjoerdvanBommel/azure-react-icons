@@ -1,0 +1,45 @@
+{
+  "name": "@threeveloper/azure-react-icons",
+  "version": "0.0.3-alpha.1",
+  "description": "A zero-dependency library to get all most recent Azure icons as react components with clear names & full TypeScript support",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/sjoerdvanBommel/azure-react-icons/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sjoerdvanBommel/azure-react-icons.git"
+  },
+  "scripts": {
+    "build": "npm run generate-azure-icon-components && tsc",
+    "generate-azure-icon-components": "node  --loader ts-node/esm src/index.mts src/generated"
+  },
+  "keywords": [
+    "svg",
+    "react",
+    "icons",
+    "azure",
+    "typescript",
+    "component"
+  ],
+  "author": "Sjoerd van Bommel",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jsdom": "^21.1.7",
+    "@types/node": "^20.0.0",
+    "@types/unzipper": "^0.10.10",
+    "commander": "^11.0.0",
+    "jsdom": "^25.0.1",
+    "node-fetch": "^3.3.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.0.0",
+    "unzipper": "^0.12.3",
+    "react": "^18",
+    "@types/react": "^18"
+  },
+  "peerDependencies": {
+    "react": ">=16"
+  }
+}
