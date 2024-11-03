@@ -1,6 +1,5 @@
 {
   "name": "@threeveloper/azure-react-icons",
-  "version": "0.1.0",
   "description": "A zero-dependency library to get all most recent Azure icons as react components with clear names & full TypeScript support",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -27,17 +26,23 @@
   "author": "Sjoerd van Bommel",
   "license": "MIT",
   "devDependencies": {
+    "@semantic-release/commit-analyzer": "^13.0.0",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^11.0.0",
+    "@semantic-release/npm": "^12.0.1",
+    "@semantic-release/release-notes-generator": "^14.0.1",
     "@types/jsdom": "^21.1.7",
     "@types/node": "^20.0.0",
+    "@types/react": "^18",
     "@types/unzipper": "^0.10.10",
     "commander": "^11.0.0",
     "jsdom": "^25.0.1",
     "node-fetch": "^3.3.2",
+    "react": "^18",
+    "semantic-release": "^24.2.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.0.0",
-    "unzipper": "^0.12.3",
-    "react": "^18",
-    "@types/react": "^18"
+    "unzipper": "^0.12.3"
   },
   "peerDependencies": {
     "react": ">=16"
