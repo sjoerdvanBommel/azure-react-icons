@@ -44,5 +44,6 @@
   },
   "peerDependencies": {
     "react": ">=16"
-  }
+  },
+  "version": "1.0.0"
 }
