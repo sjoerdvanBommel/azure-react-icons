@@ -1,7 +1,7 @@
 import { mkdirSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync } from 'fs';
 import path from 'path';
-import optimizeSvg from './lib/svg-optimizer.mjs';
-import svgToComponent from './lib/svg2component.mjs';
+import optimizeSvg from './lib/svg-optimizer.ts';
+import svgToComponent from './lib/svg2component.ts';
 
 const componentsDirName = 'components';
 

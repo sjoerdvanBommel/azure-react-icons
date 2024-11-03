@@ -1,4 +1,6 @@
-import { optimize, Config } from 'svgo';
+import svgo from 'svgo';
+const { optimize } = svgo;
+type Config = svgo.Config;
 
 interface OptimizeOptions {
   path?: string;

@@ -5,7 +5,7 @@ import { pipeline } from 'stream/promises';
 import { Extract } from 'unzipper';
 
 const AZURE_ICONS_URL = 'https://arch-center.azureedge.net/icons/Azure_Public_Service_Icons_V19.zip';
-const TMP_DIR = join(process.cwd(), 'src/generated/tmp');
+const TMP_DIR = join(process.cwd(), 'tmp');
 const ZIP_PATH = join(TMP_DIR, 'azure_icons.zip');
 
 export async function downloadAndExtractAzureIcons(): Promise<void> {
