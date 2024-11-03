@@ -14,11 +14,11 @@ async function main() {
     // Build icons from the extracted files
     await buildIcons({
       ...params,
-      inputDir: join(process.cwd(), 'app/generated/tmp/Azure_Public_Service_Icons/Icons') // Point to extracted files
+      inputDir: join(process.cwd(), 'src/generated/tmp/Azure_Public_Service_Icons/Icons') // Point to extracted files
     });
     
     // Clean up tmp directory after processing
-    rmSync(join(process.cwd(), 'app/generated/tmp'), { recursive: true, force: true });
+    rmSync(join(process.cwd(), 'src/generated/tmp'), { recursive: true, force: true });
   } catch (error) {
     console.error('Error processing icons:', error);
     process.exit(1);
