@@ -34,7 +34,7 @@ jobs:
         run: npm run test:run
 
       - name: Compile TypeScript
-        run: tsc
+        run: tsc -p tsconfig.build.json
 
       - name: Release
         env:
