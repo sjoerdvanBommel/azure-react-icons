@@ -15,7 +15,10 @@ export function sanitizeCategoryName(category: string): string {
 
 export function sanitizeComponentName(name: string): string {
   return name
-    .replace(/[+]/g, 'Plus')
+    .replace(/[+]/g, '_Plus_') // Use underscores to still pascal case the word later on
+    .split(/[^a-zA-Z0-9]+/)
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+    .join('')
     .replace(/[^a-zA-Z0-9]/g, '');
 }
 
