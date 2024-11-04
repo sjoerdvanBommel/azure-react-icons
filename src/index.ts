@@ -1,8 +1,8 @@
 import { rmSync } from 'fs';
 import { join } from 'path';
-import { buildIcons } from './build-icons.ts';
-import { downloadAndExtractAzureIcons } from './download-icons.ts';
-import { parseParams } from './lib/parse-params.ts';
+import { buildIcons } from './build-icons';
+import { downloadAndExtractAzureIcons } from './download-icons';
+import { parseParams } from './lib/parse-params';
 
 async function main() {
   try {
@@ -18,6 +18,8 @@ async function main() {
     
     // Clean up tmp directory after processing
     rmSync(join(process.cwd(), 'tmp'), { recursive: true, force: true });
+
+    console.log('Successfully processed icons');
   } catch (error) {
     console.error('Error processing icons:', error);
     process.exit(1);

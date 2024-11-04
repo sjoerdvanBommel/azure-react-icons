@@ -1,7 +1,7 @@
 import { mkdirSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync } from 'fs';
 import path from 'path';
-import optimizeSvg from './lib/svg-optimizer.ts';
-import svgToComponent from './lib/svg2component.ts';
+import optimizeSvg from './lib/svg-optimizer';
+import svgToComponent from './lib/svg2component';
 
 const componentsDirName = 'components';
 
@@ -182,7 +182,7 @@ function generateIndexContent(components: ComponentInfo[]): string {
     
     if (exactNumberDuplicates.length > 1) {
       // Add category between name and number for disambiguation
-      return `${name}${sanitizeCategoryName(category)}${numericId}`;
+      return `${name}${sanitizeCategoryName(category)}`;
     } else if (exactDuplicates.length > 1) {
       return `${name}${numericId}`;
     } else if (isCategoryDuplicate) {
@@ -193,7 +193,7 @@ function generateIndexContent(components: ComponentInfo[]): string {
     return name;
   }
 
-  // Generate imports using the helper
+  // Generate imports and exports for individual components
   const imports = components.map(component => {
     const name = sanitizeComponentName(component.name);
     const path = './' + component.path.replace(/\.tsx$/, '');
@@ -204,63 +204,58 @@ function generateIndexContent(components: ComponentInfo[]): string {
       : `import { ${name} } from '${path}';`;
   }).join('\n');
 
-  // Generate category exports using the same helper
-  const categoryExports = Object.entries(groupByCategory(components)).map(([category, comps]) => {
-    // Use a Set to track which base names we've already exported
-    const exportedNames = new Set<string>();
+  // Generate re-exports for all components
+  const individualExports = components.map(component => {
+    const name = sanitizeComponentName(component.name);
+    const alias = getComponentAlias(name, component.category, component.path);
     
+    return alias !== name
+      ? `export { ${alias} };`
+      : `export { ${name} };`;
+  }).join('\n');
+
+  // Generate category exports with components property
+  const categoryExports = Object.entries(groupByCategory(components)).map(([category, comps]) => {
+    const pascalCase = sanitizeCategoryName(category);
+    const exportedNames = new Set<string>();
+    const label = category
+      .replace(/^\d+[-\s]*/, '')
+      .split(/\s*\+\s*/)
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+      .join(' + ');
+
     const exports = comps.map(comp => {
       const baseName = sanitizeComponentName(comp.name);
       const alias = getComponentAlias(baseName, comp.category, comp.path);
       
-      // If we've already exported this base name, skip it
       if (exportedNames.has(baseName)) {
         return null;
       }
       exportedNames.add(baseName);
       
       return `${baseName}: ${alias}`;
-    }).filter(Boolean); // Remove null entries
+    }).filter(Boolean);
     
-    return `export const ${sanitizeCategoryName(category)} = {
-      ${exports.join(',\n  ')},
+    return `export const ${pascalCase} = {
+      label: '${label}',
+      components: {
+        ${exports.join(',\n    ')}
+      }
     } as const;`;
   }).join('\n\n');
 
-  // Generate Categories export with user-friendly labels and components reference
-  const categoriesExport = `export const Categories = {
+  // Generate default export (Categories) using the same structure
+  const defaultExport = `export default {
     ${Object.keys(groupByCategory(components))
       .map(category => {
         const pascalCase = sanitizeCategoryName(category);
-        // Convert category to user-friendly label
-        const label = category
-          .replace(/^\d+[-\s]*/, '')
-          .split(/\s*\+\s*/)
-          .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
-          .join(' + ');
-        
-        return `${pascalCase}: {
-      label: '${label}',
-      components: ${pascalCase}
-    }`;
+        return `${pascalCase}: ${pascalCase}`;
       })
       .join(',\n    ')}
   } as const;`;
 
-  // Fix category names for the final export
-  const finalExport = `export default {
-    ${Object.keys(groupByCategory(components))
-      .map(category => {
-        const sanitizedCategory = sanitizeCategoryName(category)
-          .replace(/\s*\+\s*/g, '') // Remove '+' and surrounding spaces
-          .replace(/\s+/g, ''); // Remove remaining spaces
-        return `...${sanitizedCategory}`;
-      })
-      .join(',\n    ')}
-  } as const;`;
-
-  // Add Categories to the final output
-  return `${imports}\n\n${categoryExports}\n\n${categoriesExport}\n\n${finalExport}\n`;
+  // Return the complete file content
+  return `${imports}\n\n${individualExports}\n\n${categoryExports}\n\n${defaultExport}\n`;
 }
 
 function createIndexFile(components: ComponentInfo[], outputDir: string): void {

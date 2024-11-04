@@ -13,8 +13,13 @@
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,
-    "isolatedModules": true
+    "isolatedModules": true,
+    "types": [
+      "vitest/globals",
+      "@testing-library/jest-dom",
+      "@testing-library/react"
+    ]
   },
-  "include": ["src/generated/**/*"],
+  "include": ["src/**/*"],
   "exclude": ["node_modules"]
 } 
