@@ -25,7 +25,9 @@
   ],
   "author": "Sjoerd van Bommel",
   "license": "MIT",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "devDependencies": {
     "@semantic-release/commit-analyzer": "^13.0.0",
     "@semantic-release/git": "^10.0.1",
@@ -54,5 +56,5 @@
   "peerDependencies": {
     "react": ">=16"
   },
-  "version": "1.1.0"
+  "version": "1.1.1"
 }
