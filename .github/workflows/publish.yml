@@ -27,8 +27,14 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build
-        run: npm run build
+      - name: Generate icons
+        run: npm run generate-azure-icon-components
+
+      - name: Test
+        run: npm run test:run
+
+      - name: Compile TypeScript
+        run: tsc
 
       - name: Release
         env:
