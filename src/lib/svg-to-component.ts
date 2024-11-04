@@ -49,7 +49,7 @@ function formatCode(code: string): string {
     .join('\n');
 }
 
-export default function svg2component(filepath: string, svgString: string) {
+export default function svgToComponent(filepath: string, svgString: string) {
   // Extract name from filepath, starting after "icon-service-"
   const nameMatch = filepath.match(/icon-service-(.*?)$/);
   
