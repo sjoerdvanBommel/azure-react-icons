@@ -9,7 +9,7 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "outDir": "dist",
-    "rootDir": "src/generated",
+    "rootDir": "src",
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,
@@ -20,6 +20,11 @@
       "@testing-library/react"
     ]
   },
-  "include": ["src/generated/**/*"],
-  "exclude": ["node_modules"]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"],
+  "references": [
+    {
+      "path": "./tsconfig.build.json"
+    }
+  ]
 } 
