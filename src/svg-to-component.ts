@@ -49,19 +49,7 @@ function formatCode(code: string): string {
     .join('\n');
 }
 
-export default function svgToComponent(filepath: string, svgString: string) {
-  // Extract name from filepath, starting after "icon-service-"
-  const nameMatch = filepath.match(/icon-service-(.*?)$/);
-  
-  // Convert the name to PascalCase and remove brackets
-  const name = nameMatch![1]
-    .split('-')
-    .map(part => part.charAt(0).toUpperCase() + part.slice(1))
-    .join('')
-    .replace(/[+]/g, 'Plus')      // Replace + with Plus
-    .replace(/[^a-zA-Z0-9]/g, '') // Remove other special characters
-    .replace(/[[\]()]/g, '');
-
+export default function svgToComponent(componentName: string, svgString: string) {
   // Create a DOM parser
   const parser = new DOMParser();
   const doc = parser.parseFromString(svgString, 'image/svg+xml');
@@ -86,10 +74,10 @@ export default function svgToComponent(filepath: string, svgString: string) {
     .replace(/ isolation="isolate"/g, ' style={{ isolation: "isolate" }}');
   
   const code = formatCode(`
-import { AzureIconProps } from '../../types';
+import { AzureIconProps } from '../../../types';
 import { FC } from 'react';
 
-export const ${name}: FC<AzureIconProps> = ({size, ...props}) => (
+export const ${componentName}: FC<AzureIconProps> = ({size, ...props}) => (
   <svg
     ${viewBox}
     fill="currentColor"
@@ -101,8 +89,8 @@ export const ${name}: FC<AzureIconProps> = ({size, ...props}) => (
   </svg>
 );
 
-${name}.displayName = '${name}';
+${componentName}.displayName = '${componentName}';
   `);
 
-  return { code, name };
+  return code;
 } 

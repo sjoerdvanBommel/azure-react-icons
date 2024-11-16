@@ -1,4 +1,4 @@
-import { mkdirSync, readdirSync, rmSync, statSync } from 'fs';
+import { readdirSync, statSync } from 'fs';
 import path from 'path';
 
 export function getAllSvgFiles(dir: string): string[] {
@@ -23,19 +23,4 @@ export function getAllSvgFiles(dir: string): string[] {
   return files;
 }
 
-export function ensureDirectory(dir: string): void {
-  try {
-    mkdirSync(dir, { recursive: true });
-  } catch (error) {
-    console.error(`Failed to create directory: ${error}`);
-    throw error;
-  }
-}
 
-export function cleanDirectory(dir: string): void {
-  try {
-    rmSync(dir, { recursive: true, force: true });
-  } catch (error) {
-    // Ignore if directory doesn't exist
-  }
-} 

@@ -10,7 +10,7 @@
   "repository": "github:sjoerdvanBommel/azure-react-icons",
   "scripts": {
     "build": "npm run generate-azure-icon-components && tsc -p tsconfig.build.json",
-    "generate-azure-icon-components": "tsx src/index.ts",
+    "generate-azure-icon-components": "tsx src/code-generators/generate-code.ts",
     "test": "vitest",
     "test:run": "vitest run",
     "coverage": "vitest run --coverage"

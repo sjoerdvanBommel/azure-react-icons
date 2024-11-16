@@ -1,21 +1,21 @@
 // This test file depends on the generated files, so it should be run after generating the icons.
 
 import { render } from '@testing-library/react';
-import GeneratedIcons, { AIStudio, AiMachineLearning } from '../generated';
+import GeneratedIcons, { AiStudio, AiMachineLearningCategory } from '../generated';
 
-describe('AIStudio Icon', () => {
+describe('AiStudio Icon', () => {
   const testCases = [
     {
       name: 'direct import',
-      Component: AIStudio,
+      Component: AiStudio,
     },
     {
       name: 'category object',
-      Component: AiMachineLearning.components.AIStudio,
+      Component: AiMachineLearningCategory.components.AiStudio,
     },
     {
       name: 'default export',
-      Component: GeneratedIcons.AiMachineLearning.components.AIStudio,
+      Component: GeneratedIcons.AiMachineLearningCategory.components.AiStudio,
     },
   ];
 
@@ -44,7 +44,7 @@ describe('AIStudio Icon', () => {
       });
 
       it('maintains correct display name', () => {
-        expect(Component.displayName).toBe('AIStudio');
+        expect(Component.displayName).toBe('AiStudio');
       });
     });
   });
@@ -54,11 +54,11 @@ describe('Category label', () => {
   const testCases = [
     {
       name: 'category object',
-      Component: AiMachineLearning,
+      Component: AiMachineLearningCategory,
     },
     {
       name: 'default export',
-      Component: GeneratedIcons.AiMachineLearning,
+      Component: GeneratedIcons.AiMachineLearningCategory,
     },
   ];
 
