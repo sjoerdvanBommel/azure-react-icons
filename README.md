@@ -27,16 +27,17 @@ import { AIStudio } from '@threeveloper/azure-react-icons';
 <AIStudio size="24" /> // Custom size
 ```
 
-If you only have the SVG path, you can use the generic `AzureSvgIcon` component and pass it an `svgPath`. It will automatically strip off anything before the last 2 path sections, which allows passing an absolute or longer relative path.
+When you only have the path of the SVG file inside of the ZIP, you can use the generic `AzureSvgIcon` component and pass it an `svgPath`. It will automatically strip off anything before the last 2 path sections, which allows passing an absolute or longer relative path. **Note:** The actual SVG file is not required here. The path will be resolved to an existing react component.
 
-These result in the same icon:
+**These all resolve to the same icon component:**
 
 ```tsx
-import { AzureSvgIcon } from '@threeveloper/azure-react-icons'
+import { AzureSvgIcon, VirtualMachine } from '@threeveloper/azure-react-icons'
 
 <AzureSvgIcon svgPath="compute/10021-icon-service-Virtual-Machine.svg" />
 <AzureSvgIcon svgPath="Icons/compute/10021-icon-service-Virtual-Machine.svg" />
 <AzureSvgIcon svgPath="~/any/amount/of/subfolders/compute/10021-icon-service-Virtual-Machine.svg" />
+<VirtualMachine />
 ```
 
 ### Display all icons in a category
