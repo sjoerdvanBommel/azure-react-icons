@@ -26,13 +26,10 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
 
       - name: Install dependencies
-        run: npm ci
-
-      - name: Generate icons
-        run: npm run generate-azure-icon-components
+        run: npm i -g pnpm && pnpm i
 
       - name: Test
-        run: npm run test:run
+        run: pnpm run test:run
 
       - name: Compile TypeScript
         run: tsc -p tsconfig.build.json
