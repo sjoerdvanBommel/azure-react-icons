@@ -1,5 +1,5 @@
 import { svgPathToComponentMap } from "./generated";
-import { AzureIconProps } from "./types";
+import type { AzureIconProps } from "./types";
 
 type AzureSvgIconProps = AzureIconProps & {
     svgPath: string;

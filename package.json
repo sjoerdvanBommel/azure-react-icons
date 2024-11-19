@@ -1,8 +1,12 @@
 {
   "name": "@threeveloper/azure-react-icons",
   "description": "A zero-dependency library to get all most recent Azure icons as react components with clear names & full TypeScript support",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "publishConfig": {
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts"
+  },
   "type": "module",
   "bugs": {
     "url": "https://github.com/sjoerdvanBommel/azure-react-icons/issues"
@@ -11,6 +15,7 @@
   "scripts": {
     "build": "npm run generate-azure-icon-components && tsc -p tsconfig.build.json",
     "generate-azure-icon-components": "tsx src/code-generators/generate-code.ts",
+    "postinstall": "npm run generate-azure-icon-components",
     "test": "vitest",
     "test:run": "vitest run",
     "coverage": "vitest run --coverage"

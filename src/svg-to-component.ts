@@ -74,8 +74,8 @@ export default function svgToComponent(componentName: string, svgString: string)
     .replace(/ isolation="isolate"/g, ' style={{ isolation: "isolate" }}');
   
   const code = formatCode(`
-import { AzureIconProps } from '../../../types';
-import { FC } from 'react';
+import type { AzureIconProps } from '../../../types';
+import type { FC } from 'react';
 
 export const ${componentName}: FC<AzureIconProps> = ({size, ...props}) => (
   <svg
