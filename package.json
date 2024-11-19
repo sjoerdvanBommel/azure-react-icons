@@ -62,5 +62,8 @@
   "peerDependencies": {
     "react": ">=16"
   },
+  "optionalDependencies": {
+    "@threeveloper/resource-type-to-icon-path": "^0.0.2"
+  },
   "version": "2.0.0-alpha.1"
 }
