@@ -1,5 +1,4 @@
 import { createReadStream, createWriteStream, mkdirSync, rmSync } from 'fs';
-import fetch from 'node-fetch';
 import { join } from 'path';
 import { pipeline } from 'stream/promises';
 import { Extract } from 'unzipper';
