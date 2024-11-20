@@ -9,8 +9,8 @@ importers:
   .:
     optionalDependencies:
       '@threeveloper/resource-type-to-icon-path':
-        specifier: ^0.0.3
-        version: 0.0.3
+        specifier: ^0.0.6
+        version: 0.0.6
     devDependencies:
       '@semantic-release/commit-analyzer':
         specifier: ^13.0.0
@@ -626,8 +626,8 @@ packages:
       '@types/react-dom':
         optional: true
 
-  '@threeveloper/resource-type-to-icon-path@0.0.3':
-    resolution: {integrity: sha512-IoSwCyWfL4mCL32hoNrbsEmeFIWnA4hE86hnvklIJQ1kDcRJir7GdyDpVmvhnYYM03Ipvh3m0fFeZjSmGibcwg==}
+  '@threeveloper/resource-type-to-icon-path@0.0.6':
+    resolution: {integrity: sha512-mr8Agr+0+US0XyciPPcH+Vph6FjBDIwlpCCDyF8d9pTCqcQpVqcOnXVfakkb2/ADdidPP+BHuvgSTkJ3H8aM5w==}
 
   '@trysound/sax@0.2.0':
     resolution: {integrity: sha512-L7z9BgrNEcYyUYtF+HaEfiS5ebkh9jXqbszz7pC0hRBPaatV0XjSD3+eHrpqFemQfgwiFF0QPIarnIihIDn7OA==}
@@ -2636,7 +2636,7 @@ snapshots:
     optionalDependencies:
       '@types/react': 18.3.12
 
-  '@threeveloper/resource-type-to-icon-path@0.0.3':
+  '@threeveloper/resource-type-to-icon-path@0.0.6':
     optional: true
 
   '@trysound/sax@0.2.0': {}
