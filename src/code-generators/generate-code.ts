@@ -1,9 +1,9 @@
 import { rmSync } from 'fs';
 import { join } from 'path';
 import { downloadAndExtractAzureIcons } from '../download-and-extract-azure-icons';
-import { getAllSvgFiles } from '../fs/get-all-svg-files';
-import { ensureDirectory } from '../fs/ensure-dir';
 import { cleanDir } from '../fs/clean-dir';
+import { ensureDirectory } from '../fs/ensure-dir';
+import { getAllSvgFiles } from '../fs/get-all-svg-files';
 import { writeComponent } from '../fs/write-component';
 import { writeIndex } from '../fs/write-index';
 import { generateIconPathInfosMap } from '../generate-icon-path-info';
@@ -27,8 +27,9 @@ async function main() {
 
     const allIconPathInfos = [...uniqueMap.values(), ...[...duplicatesMap.values()].flat()];
     // map over uniqueMap and return promises for each writeTsxComponent
-    const writeComponentPromises = allIconPathInfos.map(iconPathInfo => writeComponent(iconPathInfo, OUTPUT_DIR));
-    await Promise.all(writeComponentPromises);
+    for (const iconPathInfo of allIconPathInfos) {
+      await writeComponent(iconPathInfo, OUTPUT_DIR)
+    }
 
     writeIndex(allIconPathInfos, OUTPUT_DIR);
     
